@@ -5,9 +5,31 @@ This lab report contains content learnt in the 15L lab of weeks 2 and 3. There a
 - Part 2: Analyzing a Bug from Lab 3
 - Part 3: Reflection of Learnings from Labs
 
-## Part 1: Creating a Webserver
+## Part 1: Creating a Web Server
 
+I will be creating a web server using the ```URLHandler``` interface. This web server called ```StringServer``` will keep track of a single string that keeps on getting added to by incoming requests. The page "listens" on localhost at the port specified by us and uses that information to add to the string. Here is the code that I used for this program:
 
+[Code for webs server](/screenshots/StringServer code.png)
+
+I ran the compiled the file and ran it at port 4000. A link was produced and I opened it in my browser to see this:
+
+[Web server](/screenshots/StringServer 3)
+
+I wanted to print out "hi" on the website, and so added ```add-message?s=hi``` to the URL and got the following result:
+
+[Adding a string](/screenshots/StringServer 4)
+
+This called the ```handleRequest``` method and went to the else block in the method. Here it executed the first if-statement since the URL did contain ```/add-message```, exectued the nested if-block within that, concatenated a new line character (``` `n ```) and the string to ```myString```, and returned the new string. Hence, the value of ```myString``` changed and got updated. Various methods such as ````.contains()```, ```.equals()```, ```.getPath()```, ```.getQuery()``` and ```.split()``` were called within these if-blocks.
+
+I repeated this process to add two more messages and display them on the web page.
+
+[Adding 2 more strings](/screenshots/StringSever 6)
+
+However, when I put ```add-message?``` in the URL without the actual string, I got a **404 error** message. This was expected since I had accounted it for in my code.
+
+[404 error](/screenshots/StringSever 7)
+
+Hnece, by exploring different inputs, I could see how web server's behaviour in response to each of them and understand which methods and parts of my code were called. 
 
 ## Part 2: Analyzing a Bug from Lab 3
 

@@ -109,7 +109,7 @@ static double averageWithoutLowest(double[] arr) {
 }
 ```
 
-By doing this, all the Junit tests passed and the bug was removed.
+By doing making these changes, all the Junit tests passed and the bug was removed.
 
 ![Passed tests](/screeenshots/TestsPassed.png)
 

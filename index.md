@@ -54,6 +54,44 @@ static double averageWithoutLowest(double[] arr) {
 }
 ```
 
+However, when I gave called this method to an array in my Junit testing an error was thrown. This was my Junit test:
+
+```
+@Test
+  public void averageWithoutLowestRepeated() {
+    double[] input3 = {4,4,5,6,7,8};
+    assertEquals(6.5, ArrayExamples.averageWithoutLowest(input3), 0);
+  }
+```
+When I ran this test, I was getting an error. The expected value was 6.5 (which is (5+6+7+8)/4) but I was getting a value of 5.2. 
+
+
+Upon looking more closely at the data, I understood that the issue was occuring with arrays in which the lowest value element was repeated. To solve this bug, I introduced a ```count``` variable to the code. This variable counted the number of lowest valued elements there were in an array (if there were repititions) and divided the sum of the remaining values by the length of the array - ```count```. Here is the code for that logic:
+
+```
+// Averages the numbers in the array (takes the mean), but leaves out the
+// lowest number when calculating. Returns 0 if there are no elements or just
+// 1 element in the array
+static double averageWithoutLowest(double[] arr) {
+  if(arr.length < 2) { return 0.0; }
+  double lowest = arr[0];
+  int count = 0;
+  for(double num: arr) {
+    if(num < lowest) { lowest = num; }
+  }
+  double sum = 0;
+  for(double num: arr) {
+    if(num != lowest) {
+      sum += num;
+    }
+    else {
+      count++;
+    }
+  }
+  return sum / (arr.length - count);
+}
+```
+
 ## Part 3: Reflection of Learnings from Labs
 
 This is the final part of my lab report. I learnt a lot in the past 2 weeks and the lab sessions were extremely valuable to me to facilitate my progress in building my knowledge and learning new things. In my week 2 lab session, I learned more about the ```URLHandler``` interface, building and running a web server both locally and remotely, and got a better understanding about how a web server works and how to program it. In my week 3 lab session, I worked on fixing bugs in various files using Junit tests, understood what symptoms and failure inducing outputs are, and worked with arrays, lists, and linked lists.

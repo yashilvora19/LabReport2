@@ -54,11 +54,13 @@ When I ran this test, I was getting an error. The expected value was 6.5 (which 
   }
  ```
 
-By looking at these two different outputs for the Junit tests, I was able to see the symptom for the code.
+By looking at these two different outputs for the Junit tests, I was able to see the **symptom** for the code.
 
 ![Junit test](/screenshots/Error.png)
 
 Upon looking more closely at the data, I understood that the issue was occuring with arrays in which the lowest value element was repeated. To solve this bug, I introduced a ```count``` variable to the code. This variable counted the number of lowest valued elements there were in an array (if there were repititions) and divided the sum of the remaining values by the length of the ```arr.length - count```. 
+
+**The Bug**
 
 Here is the code that was given to us:
 
@@ -106,6 +108,10 @@ static double averageWithoutLowest(double[] arr) {
   return sum / (arr.length - count);
 }
 ```
+
+By doing this, all the Junit tests passed and the bug was removed.
+
+![Passed tests](/screeenshots/TestsPassed.png)
 
 ## Part 3: Reflection of Learnings from Labs
 

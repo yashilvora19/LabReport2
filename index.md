@@ -54,7 +54,7 @@ When I ran this test, I was getting an error. The expected value was 6.5 (which 
   }
  ```
 
-By looking at these two different outputs for the Junit tests, I was able to see the **symptom** for the code.
+By looking at these two different outputs for the Junit tests, I was able to see the **symptom** of the code.
 
 ![Junit test](/screenshots/Error.png)
 

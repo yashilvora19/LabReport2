@@ -13,21 +13,21 @@ I will be creating a web server using the ```URLHandler``` interface. This web s
 
 I ran the compiled the file and ran it at port 4000. A link was produced and I opened it in my browser to see this:
 
-![Web server](/screenshots/StringServer 3)
+![Web server](/screenshots/StringServer3.png)
 
 A new server was started from my main method by calling ```Server.start()```. I wanted to print out "hi" on the website, and so added ```add-message?s=hi``` to the URL and got the following result:
 
-![Adding a string](/screenshots/StringServer 4)
+![Adding a string](/screenshots/StringServer4.png)
 
 This called the ```handleRequest``` method and went to the else block in the method. Here it executed the first if-statement since the URL did contain ```/add-message```, exectued the nested if-block within that, concatenated a new line character (``` `n ```) and the string to ```myString```, and returned the new string. Hence, the value of ```myString``` changed and got updated. Various methods such as ````contains()```, ```equals()```, ```getPath()```, ```getQuery()``` and ```split()``` were called within these if-blocks.
 
 I repeated this process to add two more messages and display them on the web page.
 
-![Adding 2 more strings](/screenshots/StringSever 6)
+![Adding 2 more strings](/screenshots/StringServer6.png)
 
 However, when I put ```add-message?``` in the URL without the actual string, I got a **404 error** message. This was expected since I had accounted it for in my code.
 
-![404 error](/screenshots/StringSever 7)
+![404 error](/screenshots/StringServer7.png)
 
 Hnece, by exploring different inputs, I could see how web server's behaviour in response to each of them and understand which methods and parts of my code were called. 
 

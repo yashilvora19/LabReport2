@@ -109,9 +109,7 @@ static double averageWithoutLowest(double[] arr) {
 }
 ```
 
-By doing making these changes, all the Junit tests passed and the bug was removed.
-
-![Passed tests](/screeenshots/TestsPassed.png)
+By doing making these changes, all the Junit tests passed and the bug was removed. This fix makes sure that if there are repeated elements of lowest value, their count is stored in a variable and subtracted from the length of the array (number of elements) so that the average of the remaining elements is accurate. Initially, the sum was just divided by the lenght of the array - 1. THis made an _assumption_ that there wouldn't be any repititions, and by making this change, the bug is removed.
 
 ## Part 3: Reflection of Learnings from Labs
 

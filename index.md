@@ -19,7 +19,7 @@ A new server was started from my main method by calling ```Server.start()```. I 
 
 ![Adding a string](/screenshots/StringServer4.png)
 
-This called the ```handleRequest``` method and went to the else block in the method. Here it executed the first if-statement since the URL did contain ```/add-message```, exectued the nested if-block within that, concatenated a new line character (``` `n ```) and the string to ```myString```, and returned the new string. Hence, the value of ```myString``` changed and got updated. Various methods such as ```contains(), equals(), getPath(), getQuery()``` and ```split()``` were called within these if-blocks.
+This called the ```handleRequest``` method and went to the else block in the method. Here it executed the first if-statement since the URL did contain ```/add-message```, exectued the nested if-block within that, concatenated a new line character (``` \n ```) and the string to ```myString```, and returned the new string. Hence, the value of ```myString``` changed and got updated. Various methods such as ```contains(), equals(), getPath(), getQuery()``` and ```split()``` were called within these if-blocks.
 
 I repeated this process to add two more messages and display them on the web page.
 
@@ -33,7 +33,26 @@ Hnece, by exploring different inputs, I could see how web server's behaviour in 
 
 ## Part 2: Analyzing a Bug from Lab 3
 
-In this section, I will look more closely at one of the bugs I worked on during my lab session in week 3. 
+In this section, I will look more closely at one of the bugs I worked on during my lab session in week 3. The bug I have chosen is the ```averageWithoutLowest``` method in the ```ArrayExamples.java``` file. The function of this method is to take a double array as an input and find the average of all the elements excluding the lowest value element in that array. Here is the code that was given to us:
+
+```
+// Averages the numbers in the array (takes the mean), but leaves out the
+// lowest number when calculating. Returns 0 if there are no elements or just
+// 1 element in the array
+static double averageWithoutLowest(double[] arr) {
+  if(arr.length < 2) { return 0.0; }
+  double lowest = arr[0];
+  for(double num: arr) {
+  if(num < lowest) { lowest = num; }
+  }
+  double sum = 0;
+  
+  for(double num: arr) {
+    if(num != lowest) { sum += num; }
+  }
+  return sum / (arr.length - 1);
+}
+```
 
 ## Part 3: Reflection of Learnings from Labs
 

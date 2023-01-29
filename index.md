@@ -19,7 +19,7 @@ A new server was started from my main method by calling ```Server.start()```. I 
 
 ![Adding a string](/screenshots/StringServer4.png)
 
-This called the ```handleRequest``` method and went to the else block in the method. Here it executed the first if-statement since the URL did contain ```/add-message```, exectued the nested if-block within that, concatenated a new line character (``` `n ```) and the string to ```myString```, and returned the new string. Hence, the value of ```myString``` changed and got updated. Various methods such as ````contains()```, ```equals()```, ```getPath()```, ```getQuery()``` and ```split()``` were called within these if-blocks.
+This called the ```handleRequest``` method and went to the else block in the method. Here it executed the first if-statement since the URL did contain ```/add-message```, exectued the nested if-block within that, concatenated a new line character (``` `n ```) and the string to ```myString```, and returned the new string. Hence, the value of ```myString``` changed and got updated. Various methods such as ```contains(), equals(), getPath(), getQuery()``` and ```split()``` were called within these if-blocks.
 
 I repeated this process to add two more messages and display them on the web page.
 

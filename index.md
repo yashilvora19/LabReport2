@@ -33,7 +33,34 @@ Hnece, by exploring different inputs, I could see how web server's behaviour in 
 
 ## Part 2: Analyzing a Bug from Lab 3
 
-In this section, I will look more closely at one of the bugs I worked on during my lab session in week 3. The bug I have chosen is the ```averageWithoutLowest``` method in the ```ArrayExamples.java``` file. The function of this method is to take a double array as an input and find the average of all the elements excluding the lowest value element in that array. Here is the code that was given to us:
+In this section, I will look more closely at one of the bugs I worked on during my lab session in week 3. The bug I have chosen is the ```averageWithoutLowest``` method in the ```ArrayExamples.java``` file. The function of this method is to take a double array as an input and find the average of all the elements excluding the lowest value element in that array. 
+
+However, when I gave called this method to an array in my Junit testing an error was thrown. This was my Junit test for the **failure-inducing input**:
+
+```
+@Test
+  public void averageWithoutLowestRepeated() {
+    double[] input3 = {4,4,5,6,7,8};
+    assertEquals(6.5, ArrayExamples.averageWithoutLowest(input3), 0);
+  }
+```
+When I ran this test, I was getting an error. The expected value was 6.5 (which is addition of 5,6,7, and 8 divided by 4) but I was getting a value of 5.2. However, when I ran a test using a different array, the Junit passed. Here is the Junit code for the input that **doesn't** induce a failure  :
+
+ ```
+@Test
+  public void averageWithoutLowestTest() {
+    double[] input3 = {4,5,6};
+    assertEquals(5.5, ArrayExamples.averageWithoutLowest(input3), 0);
+  }
+ ```
+
+By looking at these two different outputs for the Junit tests, I was able to see the symptom for the code.
+
+![Junit test](/screenshots/Error.png)
+
+Upon looking more closely at the data, I understood that the issue was occuring with arrays in which the lowest value element was repeated. To solve this bug, I introduced a ```count``` variable to the code. This variable counted the number of lowest valued elements there were in an array (if there were repititions) and divided the sum of the remaining values by the length of the ```arr.length - count```. 
+
+Here is the code that was given to us:
 
 ```
 // Averages the numbers in the array (takes the mean), but leaves out the
@@ -54,19 +81,7 @@ static double averageWithoutLowest(double[] arr) {
 }
 ```
 
-However, when I gave called this method to an array in my Junit testing an error was thrown. This was my Junit test:
-
-```
-@Test
-  public void averageWithoutLowestRepeated() {
-    double[] input3 = {4,4,5,6,7,8};
-    assertEquals(6.5, ArrayExamples.averageWithoutLowest(input3), 0);
-  }
-```
-When I ran this test, I was getting an error. The expected value was 6.5 (which is (5+6+7+8)/4) but I was getting a value of 5.2. 
-
-
-Upon looking more closely at the data, I understood that the issue was occuring with arrays in which the lowest value element was repeated. To solve this bug, I introduced a ```count``` variable to the code. This variable counted the number of lowest valued elements there were in an array (if there were repititions) and divided the sum of the remaining values by the length of the array - ```count```. Here is the code for that logic:
+Here is the code with the changed logic to remove the bug:
 
 ```
 // Averages the numbers in the array (takes the mean), but leaves out the

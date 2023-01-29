@@ -15,7 +15,7 @@ I ran the compiled the file and ran it at port 4000. A link was produced and I o
 
 [Web server](/screenshots/StringServer 3)
 
-I wanted to print out "hi" on the website, and so added ```add-message?s=hi``` to the URL and got the following result:
+A new server was started from my main method by calling ```Server.start()```. I wanted to print out "hi" on the website, and so added ```add-message?s=hi``` to the URL and got the following result:
 
 [Adding a string](/screenshots/StringServer 4)
 
@@ -33,7 +33,7 @@ Hnece, by exploring different inputs, I could see how web server's behaviour in 
 
 ## Part 2: Analyzing a Bug from Lab 3
 
-In this section, I will look more closely at one of the bugs I worked on during my lab session in week 3.
+In this section, I will look more closely at one of the bugs I worked on during my lab session in week 3. 
 
 ## Part 3: Reflection of Learnings from Labs
 

@@ -9,7 +9,42 @@ This lab report contains content learnt in the 15L lab of weeks 2 and 3. There a
 
 I will be creating a web server using the ```URLHandler``` interface. This web server called ```StringServer``` will keep track of a single string that keeps on getting added to by incoming requests. The page "listens" on localhost at the port specified by us and uses that information to add to the string. Here is the code that I used for this program:
 
-![Code for webs server](/screenshots/StringServer code.png)
+```
+import java.io.IOException;
+import java.net.URI;
+
+class Handler implements URLHandler {
+    String myString = new String("");
+
+    public String handleRequest(URI url) {
+        if (url.getPath().equals("/")) {
+            return myString;
+        } 
+        else {
+            System.out.println("Path: " + url.getPath());
+            if (url.getPath().contains("/add-message")) {
+                String[] parameters = url.getQuery().split("=");
+                if (parameters[0].equals("s")) {
+                    myString = myString  + "\n" + parameters[1];
+                    return myString;
+                }
+            }
+            return "404 Not Found!";
+        }
+    }
+}
+class StringServer {
+    public static void main(String[] args) throws IOException {
+        if(args.length == 0){
+            System.out.println("Port number missing! Try a number between 1024 and 49151");
+            return;
+        }
+        int port = Integer.parseInt(args[0]);
+        Server.start(port, new Handler());
+    }
+}
+```
+
 I ran the compiled the file and ran it at port 4000. A link was produced and I opened it in my browser to see this:
 
 ![Web server](/screenshots/StringServer3.png)
